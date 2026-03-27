@@ -1,5 +1,7 @@
 # FastRead
 
+![Fastread Preview](docs/preview.gif)
+
 Speed reader that displays one word at a time with a focal point for optimal recognition. Single Rust binary, ~3MB.
 
 **[Try it in your browser](https://merv1n34k.github.io/fastread/)**
