@@ -1,6 +1,6 @@
 use eframe::egui;
 use std::sync::Arc;
-use std::time::Instant;
+use web_time::Instant;
 
 #[cfg(not(target_arch = "wasm32"))]
 fn main() -> eframe::Result<()> {

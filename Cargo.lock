@@ -544,6 +544,7 @@ dependencies = [
  "eframe",
  "wasm-bindgen-futures",
  "web-sys",
+ "web-time",
 ]
 
 [[package]]
