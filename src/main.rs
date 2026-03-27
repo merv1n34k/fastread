@@ -2,6 +2,7 @@ use eframe::egui;
 use std::sync::Arc;
 use std::time::Instant;
 
+#[cfg(not(target_arch = "wasm32"))]
 fn main() -> eframe::Result<()> {
     eframe::run_native(
         "FastRead",
@@ -18,6 +19,26 @@ fn main() -> eframe::Result<()> {
             Ok(Box::new(app))
         }),
     )
+}
+
+#[cfg(target_arch = "wasm32")]
+fn main() {
+    let web_options = eframe::WebOptions::default();
+    wasm_bindgen_futures::spawn_local(async {
+        eframe::WebRunner::new()
+            .start(
+                "the_canvas_id",
+                web_options,
+                Box::new(|cc| {
+                    load_fonts(&cc.egui_ctx);
+                    let app = App::default();
+                    app.apply_theme(&cc.egui_ctx);
+                    Ok(Box::new(app))
+                }),
+            )
+            .await
+            .expect("failed to start eframe");
+    });
 }
 
 fn load_fonts(ctx: &egui::Context) {

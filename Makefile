@@ -1,4 +1,4 @@
-.PHONY: setup dev build test test-all lint fmt clean
+.PHONY: setup dev build install test test-all lint fmt clean
 
 setup:
 	cargo build
@@ -8,6 +8,9 @@ dev:
 
 build:
 	cargo build --release
+
+install: build
+	cp target/release/fastread /usr/local/bin/fastread
 
 test:
 	cargo test
