@@ -257,11 +257,10 @@ impl eframe::App for App {
             ctx.request_repaint();
         }
 
-        // -- bottom: text input --
+        // -- bottom: text input (fixed 20% of window) --
+        let panel_h = ctx.screen_rect().height() * 0.2;
         egui::TopBottomPanel::bottom("input")
-            .resizable(true)
-            .default_height(140.0)
-            .height_range(60.0..=400.0)
+            .exact_height(panel_h)
             .frame(egui::Frame::default().fill(t.bg).inner_margin(egui::Margin {
                 left: 32,
                 right: 32,
